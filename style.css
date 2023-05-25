@@ -61,3 +61,11 @@ ol.center li
 .set-number {
     font-weight: bold;
 }
+@media (max-width: 800px) {
+  .gif-description, body {
+    text-align: center !important;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+}
