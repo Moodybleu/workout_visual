@@ -1,31 +1,47 @@
-// The data/time we want to countdown to
-var countDownDate = new Date("Jul 25, 2021 16:37:52").getTime();
+let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
+let timerRef = document.querySelector('.timerDisplay');
+let int = null;
 
-// Run myfunc every second
-var myfunc = setInterval(function() {
+// Function for start button
+document.getElementById('startTimer').addEventListener('click', ()=>{
+    if(int!==null){
+        clearInterval(int);
+    }
+    int = setInterval(displayTimer,10);
+});
 
-var now = new Date().getTime();
-var timeleft = countDownDate - now;
-    
-// Calculating the days, hours, minutes and seconds left
-var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
-    
-// Result is output to the specific element
-document.getElementById("days").innerHTML = days + "d "
-document.getElementById("hours").innerHTML = hours + "h " 
-document.getElementById("mins").innerHTML = minutes + "m " 
-document.getElementById("secs").innerHTML = seconds + "s " 
-    
-// Display the message when countdown is over
-if (timeleft < 0) {
-    clearInterval(myfunc);
-    document.getElementById("days").innerHTML = ""
-    document.getElementById("hours").innerHTML = "" 
-    document.getElementById("mins").innerHTML = ""
-    document.getElementById("secs").innerHTML = ""
-    document.getElementById("end").innerHTML = "TIME UP!!";
+// Function for pause button
+document.getElementById('pauseTimer').addEventListener('click', ()=>{
+    clearInterval(int);
+});
+
+// Function for reset button
+document.getElementById('resetTimer').addEventListener('click', ()=>{
+    clearInterval(int);
+    [milliseconds,seconds,minutes,hours] = [0,0,0,0];
+    timerRef.innerHTML = '00 : 00 : 00 : 000 ';
+});
+
+// Function for stopwatch
+function displayTimer(){
+    milliseconds+=10;
+    if(milliseconds == 1000){
+        milliseconds = 0;
+        seconds++;
+        if(seconds == 60){
+            seconds = 0;
+            minutes++;
+            if(minutes == 60){
+                minutes = 0;
+                hours++;
+            }
+        }
+    }
+
+// setting the values
+let h = hours < 10 ? "0" + hours : hours;
+ let m = minutes < 10 ? "0" + minutes : minutes;
+ let s = seconds < 10 ? "0" + seconds : seconds;
+ let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
+ timerRef.innerHTML = ` ${h} : ${m} : ${s} : ${ms}`;
 }
-}, 1000);
