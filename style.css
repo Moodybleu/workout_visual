@@ -48,11 +48,6 @@ border-radius: $radius;
 -khtml-border-radius: $radius; 
 }
 
-.wrapper {
-color: white;
-text-align:center;
-}
-
 h1{
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
