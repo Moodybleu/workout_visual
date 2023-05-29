@@ -1,47 +1,60 @@
-let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
-let timerRef = document.querySelector('.timerDisplay');
-let int = null;
-
-// Function for start button
-document.getElementById('startTimer').addEventListener('click', ()=>{
-    if(int!==null){
-        clearInterval(int);
+window.onload = function () {
+  
+    var seconds = 00; 
+    var tens = 00; 
+    var appendTens = document.getElementById("tens")
+    var appendSeconds = document.getElementById("seconds")
+    var buttonStart = document.getElementById('button-start');
+    var buttonStop = document.getElementById('button-stop');
+    var buttonReset = document.getElementById('button-reset');
+    var Interval ;
+  
+    buttonStart.onclick = function() {
+      
+      clearInterval(Interval);
+       Interval = setInterval(startTimer, 10);
     }
-    int = setInterval(displayTimer,10);
-});
-
-// Function for pause button
-document.getElementById('pauseTimer').addEventListener('click', ()=>{
-    clearInterval(int);
-});
-
-// Function for reset button
-document.getElementById('resetTimer').addEventListener('click', ()=>{
-    clearInterval(int);
-    [milliseconds,seconds,minutes,hours] = [0,0,0,0];
-    timerRef.innerHTML = '00 : 00 : 00 : 000 ';
-});
-
-// Function for stopwatch
-function displayTimer(){
-    milliseconds+=10;
-    if(milliseconds == 1000){
-        milliseconds = 0;
+    
+      buttonStop.onclick = function() {
+         clearInterval(Interval);
+    }
+    
+  
+    buttonReset.onclick = function() {
+       clearInterval(Interval);
+      tens = "00";
+        seconds = "00";
+      appendTens.innerHTML = tens;
+        appendSeconds.innerHTML = seconds;
+    }
+    
+     
+    
+    function startTimer () {
+      tens++; 
+      
+      if(tens <= 9){
+        appendTens.innerHTML = "0" + tens;
+      }
+      
+      if (tens > 9){
+        appendTens.innerHTML = tens;
+        
+      } 
+      
+      if (tens > 99) {
+        console.log("seconds");
         seconds++;
-        if(seconds == 60){
-            seconds = 0;
-            minutes++;
-            if(minutes == 60){
-                minutes = 0;
-                hours++;
-            }
-        }
+        appendSeconds.innerHTML = "0" + seconds;
+        tens = 0;
+        appendTens.innerHTML = "0" + 0;
+      }
+      
+      if (seconds > 9){
+        appendSeconds.innerHTML = seconds;
+      }
+    
     }
-
-// setting the values
-let h = hours < 10 ? "0" + hours : hours;
- let m = minutes < 10 ? "0" + minutes : minutes;
- let s = seconds < 10 ? "0" + seconds : seconds;
- let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
- timerRef.innerHTML = ` ${h} : ${m} : ${s} : ${ms}`;
-}
+    
+  
+  }

@@ -20,11 +20,10 @@ ol.center li {
  text-align: center;
  }
 
-.timer-function {
+.container {
     position: fixed;
-    border: 1px solid white;
     color: black;
-    background-color: white;
+    background-color: transparent;
     padding: 10px;
 }
 .set-number {
@@ -34,4 +33,54 @@ ol.center li {
   display: grid;
   place-items: center;
 }
+
+
+/* Mixin's */  
+@mixin transition {
+-webkit-transition: all 0.5s ease-in-out;
+-moz-transition: all 0.5s ease-in-out;
+transition: all 0.5s ease-in-out;
+}
+@mixin corners ($radius) {
+-moz-border-radius: $radius;
+-webkit-border-radius: $radius;
+border-radius: $radius; 
+-khtml-border-radius: $radius; 
+}
+
+.wrapper {
+color: white;
+text-align:center;
+}
+
+h1{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 2.6em;
+  text-transform: uppercase;
+}
+
+#seconds, #tens{
+  font-size:2em;
+}
+
+button{
+@include corners (5px);
+background: base-color;
+border: solid 1px white;
+text-decoration:none;
+cursor: pointer;
+font-size: 1.2em;
+padding: 18px 10px;
+width: 150px;
+margin: 10px;
+ outline: none;
+  &:hover{
+	@include transition;
+	background: white;
+	border: solid 1px  white;
+	color: base-color;
+	}
+}
+
 

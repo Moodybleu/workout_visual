@@ -7,19 +7,20 @@
     <title>Hips and Thighs</title>
     <link rel="stylesheet" href="./style.css">
     <link type="image/png" sizes="32x32" rel="icon" href="./Images/icons8-fitness-32px.png">
+    <script src="./script.js"></script>
 </head>
 <body>
     <main>
-        <!-- Floating Timer -->
-        <section>
-            <div class="timer-function">
-                <div class="stopwatch">
-                    <h1><span class="gold"></span> STOPWATCH</h1>
-                    <div class="circle">
-                      <span class="time" id="display">00:00:00</span>
-                    </div>
-            </div>    
-        </section>
+        <!-- Floating Stopwatch -->
+        <aside class="container">
+            <div class="wrapper">
+                <h1>Stopwatch</h1>
+                <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                <button id="button-start">Start</button>
+                <button id="button-stop">Stop</button>
+                <button id="button-reset">Reset</button>
+                </div> 
+            </aside>
 
         <!-- Workout gif's and their instructions -->
         <section class="content">
@@ -175,6 +176,6 @@
         </section>
 
     </main>
-    <script type="text/javascript" src="./script.js"></script>
+    
 </body>
 </html>
