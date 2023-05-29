@@ -18,22 +18,29 @@ ol.center li {
 }
 
 .workoutGif {
-    width: 550px;
-    height: 550px;
-    padding: 10px;   
+  width: 550px;
+  height: 550px;
+  padding: 10px;   
 }
 
-.container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    color: white;
-    background-color: transparent;
-    padding: 10px;
+#stopwatch {
+  position: fixed;
+  width: 400px;
+  height: 250px;
+  color: black;
+  background-color: white;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50% ;
 }
 
 .set-number {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .content {
