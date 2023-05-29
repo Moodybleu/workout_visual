@@ -1,24 +1,27 @@
+body {
+  background-color: navy;
+  color: white;
+  font-size: large;
+  text-align: center;
+}
+
+a {
+  color: orangered;
+}
+
+ol.center li {
+  text-align: center;
+}
+
+.center {
+  list-style-position: inside;
+}
+
 .workoutGif {
     width: 550px;
     height: 550px;
     padding: 10px;   
 }
-body {
-    background-color: navy;
-    color: white;
-    font-size: large;
-    text-align: center;
-}
-a {
-    color: orangered;
-}
-.center {
- list-style-position: inside;
-}
-
-ol.center li {
- text-align: center;
- }
 
 .container {
     position: fixed;
@@ -28,14 +31,16 @@ ol.center li {
     background-color: transparent;
     padding: 10px;
 }
+
 .set-number {
     font-weight: bold;
 }
+
 .content {
   display: grid;
   place-items: center;
+  padding: 50px;
 }
-
 
 /* Mixin's */  
 @mixin transition {
@@ -43,6 +48,7 @@ ol.center li {
 -moz-transition: all 0.5s ease-in-out;
 transition: all 0.5s ease-in-out;
 }
+
 @mixin corners ($radius) {
 -moz-border-radius: $radius;
 -webkit-border-radius: $radius;
